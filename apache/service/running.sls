@@ -17,7 +17,7 @@ apache-service-running:
     - name: {{ apache.service.name }}
     - enable: True
     - watch:
-      - sls: {{ sls_config_file }}
+      - file: apache-config-file-managed
     - retry: {{ apache.retry_option|json }}
   cmd.run:
     - names:
@@ -42,9 +42,9 @@ apache-service-running-restart:
     - python_shell: True
          {%- endif %}
     - watch:
-      - sls: {{ sls_config_file }}
+      - file: apache-config-file-managed
     - require:
-      - sls: {{ sls_config_file }}
+      - file: apache-config-file-managed
       - service: apache-service-running
 
 apache-service-running-reload:
@@ -58,7 +58,7 @@ apache-service-running-reload:
     - python_shell: True
          {%- endif %}
     - watch:
-      - sls: {{ sls_config_file }}
+      - file: apache-config-file-managed
     - require:
-      - sls: {{ sls_config_file }}
+      - file: apache-config-file-managed
       - service: apache-service-running
