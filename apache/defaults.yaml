@@ -21,6 +21,7 @@ apache:
   confdir: /etc/apache2/conf.d
   davlockdbdir: null
   logdir: /var/log/apache2
+  logdir_group: null  # Defaults to apache.group
   wwwdir: /srv/apache2
   document_root_user: null   # Do not enforce group
   document_root_group: null  # Do not enforce group
